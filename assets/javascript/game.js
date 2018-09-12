@@ -10,6 +10,13 @@ function startGame() {
 
 function resetRoster() {
     return {
+        'exarkun' : {
+            name: 'Exar Kun',
+            health: '80',
+            attack: '8',
+            counterattack: '10',
+            image: 'assets/images/exarkun2.jpg',
+        },
         'kirkanos' : {
             name: 'Kir Kanos',
             health: '180',
@@ -17,19 +24,19 @@ function resetRoster() {
             counterattack: '15',
             image: 'assets/images/kirkanos.jpg',
         },
+        'marajade' : {
+            name: 'Mara Jade',
+            health: '120',
+            attack: '9',
+            counterattack: '12',
+            image: 'assets/images/marajade.jpg',
+        },
         'starkiller' : {
             name: 'Starkiller',
             health: '150',
             attack: '12',
             counterattack: '15',
             image: 'assets/images/starkiller3.jpg',
-        },
-        'marajade' : {
-            name: 'Mara Jade',
-            health: '120',
-            attack: '9',
-            counterattack: '8',
-            image: 'assets/images/marajade.jpg',
         },
         'tenelka' : {
             name: 'Tenel Ka',
@@ -109,18 +116,15 @@ function counterattack() {
 function checkHealthStats() {
     if (game.chosenCharacter.health <=0) {
         alert("Alas... you were defeated by " + game.chosenRival.name + ".  Click Reset if you wish to play again.");
-        $("#chosen-character").empty();
-        $("#attack-btn").hide();
+        $("#chosen-character, #defender").empty();
+        $(".row-header-chosen, .row-header-fight, .row-header-defender, #attack-btn, #battle-stats-display").hide();
         $("#reset-btn").show();
-        $("#battle-stats-display").hide();
     } else if (game.chosenRival.health <= 0) {
         game.enemiesLeft--;
-        $(".row-header-fight").hide();
-        $("#attack-btn").hide();
-        $(".row-header-defender").hide();
+        $(".row-header-fight, .row-header-defender, #attack-btn").hide();
         $("#defender").empty();
         if (game.enemiesLeft === 0) {
-            alert("You were Victorious!  All Opponents have been Defeated!  Click Reset if you wish to play again.");
+            alert("You were Victorious!  All Opponents have been Defeated!  Click 'Reset' if you wish to play again.");
             $("#battle-stats-display").hide();
             $("#reset-btn").show();
         } else {
@@ -133,12 +137,9 @@ function checkHealthStats() {
 }
 
 function cleargameboard() {
-    $(".row-header-roster").show();
-    $("#roster").show();
+    $(".row-header-roster, #roster").show();
     $(".row-header-chosen, .row-header-enemies, .row-header-fight, .row-header-defender, #attack-btn").hide();
-    $("#chosen-character").empty();
-    $("#enemies-roster").empty();
-    $("#defender").empty();
+    $("#chosen-character, #enemies-roster, #defender").empty();
 }
 
 
@@ -178,24 +179,8 @@ $(document).ready(function() {
     $("#reset-btn").on("click", function() {
         cleargameboard();
         startGame();
+        $("#reset-btn").hide();
     });
 
     startGame();
 });
-
-/*    var kirkanos;
-    var starkiller;
-    var marajade;
-    var tenelka;*/
-
-/*    $("#kirkanos").on("click", selectedCharacter(kirkanos));
-    $("#starkiller").on("click", selectedCharacter(starkiller));
-    $("#marajade").on("click", selectedCharacter(marajade));
-    $("#tenelka").on("click", selectedCharacter(tenelka));
-
-/!*    function selectedCharacter() {
-        kirkanos = $("#chosen-character").html("<button id='kirkanos'><img src='assets/images/kirkanos.jpg' height='150px' width='150px'></button>");
-        starkiller = $("#chosen-character").html("<button id='starkiller'><img src='assets/images/starkiller3.jpg' height='150px' width='150px'> </button>");
-        marajade = $("#chosen-character").html("<button id='marajade'><img src='assets/images/marajade.jpg' height='150px' width='150px'> </button>");
-        tenelka = $("#chosen-character").html("<button id='tenelka'><img src='assets/images/tenelka2.jpg' height='150px' width='150px'> </button>");
-};*!/!*/
