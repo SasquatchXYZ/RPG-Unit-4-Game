@@ -12,6 +12,12 @@ h2 {
     font-weight: 700;
 }
 
+h3 {
+    font-size: 1.5em;
+    font-weight: 600;
+    color: orangered;
+}
+
 h4 {
     font-size: 1.25em;
     font-weight: 400;
@@ -122,6 +128,12 @@ html {
     margin: 0 auto;
     color: red;
     background: black;
+}
+
+#result {
+    display: table;
+    margin: 5px auto;
+    background: beige;
 }
 
 #reset-btn {

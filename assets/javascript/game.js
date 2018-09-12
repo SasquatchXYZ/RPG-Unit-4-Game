@@ -99,6 +99,7 @@ function selectDefender() {
         $("#defender").append(this);
         $(".enemy_card").off("click");
         $(".row-header-enemies").hide();
+        $("#result").empty();
         $(".row-header-fight, .row-header-defender, #attack-btn").show();
     });
 
@@ -115,21 +116,24 @@ function counterattack() {
 
 function checkHealthStats() {
     if (game.chosenCharacter.health <=0) {
-        alert("Alas... you were defeated by " + game.chosenRival.name + ".  Click Reset if you wish to play again.");
+/*        alert("Alas... you were defeated by " + game.chosenRival.name + ".  Click Reset if you wish to play again.");*/
         $("#chosen-character, #defender").empty();
         $(".row-header-chosen, .row-header-fight, .row-header-defender, #attack-btn, #battle-stats-display").hide();
+        $("#result").html("Alas... you were defeated by " + game.chosenRival.name + ".  Click 'Reset Game' if you wish to play again.");
         $("#reset-btn").show();
     } else if (game.chosenRival.health <= 0) {
         game.enemiesLeft--;
         $(".row-header-fight, .row-header-defender, #attack-btn").hide();
         $("#defender").empty();
         if (game.enemiesLeft === 0) {
-            alert("You were Victorious!  All Opponents have been Defeated!  Click 'Reset' if you wish to play again.");
+/*            alert("You were Victorious!  All Opponents have been Defeated!  Click 'Reset' if you wish to play again.");*/
             $("#battle-stats-display").hide();
+            $("#result").html("You were Victorious!  All Opponents have been Defeated!  Click 'Reset Game' if you wish to play again.");
             $("#reset-btn").show();
         } else {
-            alert("You have bested " + game.chosenRival.name + ".  Select your next opponent to fight.");
+/*            alert("You have bested " + game.chosenRival.name + ".  Select your next opponent to fight.");*/
             $("#battle-stats-display").hide();
+            $("#result").html("You have bested " + game.chosenRival.name + ".  Select your next opponent to fight.");
             $(".row-header-enemies").show();
             selectDefender();
         }
@@ -139,7 +143,7 @@ function checkHealthStats() {
 function cleargameboard() {
     $(".row-header-roster, #roster").show();
     $(".row-header-chosen, .row-header-enemies, .row-header-fight, .row-header-defender, #attack-btn").hide();
-    $("#chosen-character, #enemies-roster, #defender").empty();
+    $("#chosen-character, #enemies-roster, #defender, #result").empty();
 }
 
 
@@ -169,8 +173,8 @@ $(document).ready(function() {
         counterattack();
         $(".hero .card_health").html(game.chosenCharacter.health);
         $(".rival .card_health").html(game.chosenRival.health);
-        $("#attack_stats").html(game.chosenCharacter.name + " attacked for " + (game.chosenCharacter.attack * game.attackLog));
-        $("#counter_attack_stats").html(game.chosenRival.name + " counter-attacked for " + game.chosenRival.counterattack);
+        $("#attack_stats").html(game.chosenCharacter.name + " attacked for " + (game.chosenCharacter.attack * game.attackLog) + " damage.");
+        $("#counter_attack_stats").html(game.chosenRival.name + " counter-attacked for " + game.chosenRival.counterattack + " damage.");
         $("#battle-stats-display").show();
         checkHealthStats();
         console.log(game);
