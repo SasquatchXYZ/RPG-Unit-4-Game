@@ -34,13 +34,69 @@ html {
     padding-top: 50px;
 }
 
-ul {
+.character_card {
+    display: inline-block;
+    margin: 5px;
+    background: beige;
+    border: 2px outset dimgray;
+    padding: 0 5px;
+}
+.card_name {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.card_image {
+    height: 150px;
+    width: 150px;
+}
+
+.card_health {
+    font-size: 1.25em;
+    font-weight: 400;
+}
+
+.row-header-chosen {
+    display: none;
+}
+
+.row-header-enemies {
+    display: none;
+}
+
+.row-header-fight {
+    display: none;
+}
+
+.row-header-defender {
+    display: none;
+}
+
+.enemy_card {
+    display: inline-block;
+    margin: 5px;
+    background: black;
+    border: 2px outset white;
+    padding: 0 5px;
+    color: white;
+}
+
+.hero {
+    border: 5px outset dimgray;
+}
+
+.rival {
+    border: 5px outset darkred;
+    color: darkred;
+}
+
+/*ul {
     padding: 10px 0;
 }
 li {
     display: inline;
     padding: 5px;
-}
+}*/
 
 #attack-btn {
     font-size: 20px;
@@ -50,6 +106,7 @@ li {
     border-radius: 10px;
     padding: 10px 20px;
     margin: 10px 0;
+    display: none;
 }
 
 #reset-btn {
