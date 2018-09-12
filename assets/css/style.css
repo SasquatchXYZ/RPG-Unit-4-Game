@@ -12,6 +12,11 @@ h2 {
     font-weight: 700;
 }
 
+h4 {
+    font-size: 1.25em;
+    font-weight: 400;
+}
+
 html {
     background: url("../images/yt1300.jpg") no-repeat center center fixed;
     -webkit-background-size: cover;
@@ -109,7 +114,20 @@ li {
     display: none;
 }
 
+#battle-stats-display {
+    display: none;
+}
+
+#attack_stats {
+    color: darkgreen;
+}
+
+#counter_attack_stats {
+    color: red;
+}
+
 #reset-btn {
+    display: none;
     font-size: 20px;
     font-weight: bold;
     background-color: cyan;

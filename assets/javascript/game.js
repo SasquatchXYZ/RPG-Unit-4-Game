@@ -1,5 +1,5 @@
-let roster;
-let game;
+let roster = {};
+let game = {};
 
 function startGame() {
     roster = resetRoster();
@@ -91,13 +91,15 @@ function selectDefender() {
         $(this).addClass('rival');
         $("#defender").append(this);
         $(".enemy_card").off("click");
+        $(".row-header-enemies").hide();
         $(".row-header-fight, .row-header-defender, #attack-btn").show();
     });
 
 }
 
 function attack(attackLog) {
-    game.chosenRival.health -= game.chosenCharacter.attack * attackLog;
+    game.attackDamage = game.chosenCharacter.attack * attackLog;
+    game.chosenRival.health -= game.attackDamage;
 }
 
 function counterattack() {
@@ -110,16 +112,21 @@ function checkHealthStats() {
         $("#chosen-character").empty();
         $("#attack-btn").hide();
         $("#reset-btn").show();
+        $("#battle-stats-display").hide();
     } else if (game.chosenRival.health <= 0) {
         game.enemiesLeft--;
-        $("#defender").empty();
+        $(".row-header-fight").hide();
         $("#attack-btn").hide();
+        $(".row-header-defender").hide();
+        $("#defender").empty();
         if (game.enemiesLeft === 0) {
             alert("You were Victorious!  All Opponents have been Defeated!  Click Reset if you wish to play again.");
-/*            $("#attack-btn").hide();*/
+            $("#battle-stats-display").hide();
             $("#reset-btn").show();
         } else {
             alert("You have bested " + game.chosenRival.name + ".  Select your next opponent to fight.");
+            $("#battle-stats-display").hide();
+            $(".row-header-enemies").show();
             selectDefender();
         }
     }
@@ -155,8 +162,18 @@ $(document).ready(function() {
         selectDefender();
     });
 
-
-
+    $("#attack-btn").on("click", function() {
+        game.attackLog++;
+        attack (game.attackLog);
+        counterattack();
+        $(".hero .card_health").html(game.chosenCharacter.health);
+        $(".rival .card_health").html(game.chosenRival.health);
+        $("#attack_stats").html(game.chosenCharacter.name + " attacked for " + (game.chosenCharacter.attack * game.attackLog));
+        $("#counter_attack_stats").html(game.chosenRival.name + " counter-attacked for " + game.chosenRival.counterattack);
+        $("#battle-stats-display").show();
+        checkHealthStats();
+        console.log(game);
+    });
 
     $("#reset-btn").on("click", function() {
         cleargameboard();
