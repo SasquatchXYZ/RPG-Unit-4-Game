@@ -5,6 +5,7 @@
 h1 {
     font-size: 4em;
     font-weight: 900;
+    text-shadow: 5px 5px 10px white;
 }
 
 h2 {
@@ -15,12 +16,14 @@ h2 {
 h3 {
     font-size: 1.5em;
     font-weight: 600;
-    color: orangered;
+    color: darkblue;
+    text-shadow: 2px 2px 8px black;
 }
 
 h4 {
     font-size: 1.25em;
-    font-weight: 400;
+    font-weight: 600;
+    text-shadow: 3px 3px 5px black;
 }
 
 html {
@@ -119,21 +122,21 @@ html {
 #attack_stats {
     display: table;
     margin: 0 auto;
-    color: darkgreen;
-    background: black;
+    color: #9ce52a;
+    /*background: black;*/
 }
 
 #counter_attack_stats {
     display: table;
     margin: 0 auto;
     color: red;
-    background: black;
+    /*background: black;*/
 }
 
 #result {
     display: table;
     margin: 5px auto;
-    background: beige;
+/*    background: beige;*/
 }
 
 #reset-btn {

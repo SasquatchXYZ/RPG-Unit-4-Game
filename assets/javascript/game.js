@@ -1,11 +1,16 @@
+// Global Objects ======================================================================================================
+
 let roster = {};
 let game = {};
+
+// Functions Outlining the Initial Game Starting Conditions ============================================================
 
 function startGame() {
     roster = resetRoster();
     game = resetGame();
 
     displayRoster();
+
 }
 
 function resetRoster() {
@@ -46,7 +51,7 @@ function resetRoster() {
             image: 'assets/images/tenelka2.jpg',
         },
     }
-};
+}
 
 function resetGame() {
     return {
@@ -54,6 +59,15 @@ function resetGame() {
         chosenRival: null,
         enemiesLeft: 0,
         attackLog: 0,
+    }
+}
+function displayRoster() {
+    var stats = Object.keys(roster);
+    for (var i = 0; i < stats.length; i++) {
+        var cardStats = stats[i];
+        var character = roster[cardStats];
+        var card = createCharacterCards(character, cardStats);
+        $("#roster").append(card);
     }
 }
 
@@ -67,15 +81,9 @@ function createCharacterCards(character, key) {
     return card;
 }
 
-function displayRoster() {
-    var stats = Object.keys(roster);
-    for (var i = 0; i < stats.length; i++) {
-        var cardStats = stats[i];
-        var character = roster[cardStats];
-        var card = createCharacterCards(character, cardStats);
-        $("#roster").append(card);
-    }
-}
+
+
+// Functions to be Called During Gameplay ==============================================================================
 
 function displayEnemyRoster(chosenCard) {
     var enemyStats = Object.keys(roster);
@@ -116,7 +124,6 @@ function counterattack() {
 
 function checkHealthStats() {
     if (game.chosenCharacter.health <=0) {
-/*        alert("Alas... you were defeated by " + game.chosenRival.name + ".  Click Reset if you wish to play again.");*/
         $("#chosen-character, #defender").empty();
         $(".row-header-chosen, .row-header-fight, .row-header-defender, #attack-btn, #battle-stats-display").hide();
         $("#result").html("Alas... you were defeated by " + game.chosenRival.name + ".  Click 'Reset Game' if you wish to play again.");
@@ -126,12 +133,11 @@ function checkHealthStats() {
         $(".row-header-fight, .row-header-defender, #attack-btn").hide();
         $("#defender").empty();
         if (game.enemiesLeft === 0) {
-/*            alert("You were Victorious!  All Opponents have been Defeated!  Click 'Reset' if you wish to play again.");*/
+
             $("#battle-stats-display").hide();
             $("#result").html("You were Victorious!  All Opponents have been Defeated!  Click 'Reset Game' if you wish to play again.");
             $("#reset-btn").show();
         } else {
-/*            alert("You have bested " + game.chosenRival.name + ".  Select your next opponent to fight.");*/
             $("#battle-stats-display").hide();
             $("#result").html("You have bested " + game.chosenRival.name + ".  Select your next opponent to fight.");
             $(".row-header-enemies").show();
@@ -146,6 +152,7 @@ function cleargameboard() {
     $("#chosen-character, #enemies-roster, #defender, #result").empty();
 }
 
+// The Main Event ======================================================================================================
 
 $(document).ready(function() {
 
@@ -160,6 +167,7 @@ $(document).ready(function() {
         $(".row-header-enemies").show();
         displayEnemyRoster(selectedCard);
         game.enemiesLeft = Object.keys(roster).length - 1;
+
         console.log(game.enemiesLeft);
 
         $("#roster").empty();
@@ -177,6 +185,7 @@ $(document).ready(function() {
         $("#counter_attack_stats").html(game.chosenRival.name + " counter-attacked for " + game.chosenRival.counterattack + " damage.");
         $("#battle-stats-display").show();
         checkHealthStats();
+
         console.log(game);
     });
 
