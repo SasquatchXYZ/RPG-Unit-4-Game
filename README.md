@@ -19,6 +19,13 @@ Web Browser - Google Chrome Preferred
 
 No installation necessary.
 
+### Notes on Gameplay
+
+* Each character in the game has 3 attributes, with values unique to their character: 'Health Points', 'Attack Power', and 'Counter Attack Power'.
+* Each time the player attacks, their particular character's 'Attack Power' is increased by it's base 'Attack Power'; however, the enemy character only has their 'Counter Attack Power', which never changes.
+* There is no healing or recovery of 'Health Points'.
+* Ultimately it comes down to picking the right opponent's to face so that you can grind your 'Attack Power', rather than choosing the character with the most 'Health Points'.
+
 ## Built With
 
 * [Meyerweb Reset CSS](https://meyerweb.com/eric/tools/css/reset/) - As the Reset CSS Stylesheet
