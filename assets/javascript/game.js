@@ -15,35 +15,35 @@ function startGame() {
 
 function resetRoster() {
     return {
-        'exarkun' : {
+        'exarkun': {
             name: 'Exar Kun',
             health: '80',
             attack: '8',
             counterattack: '10',
             image: 'assets/images/exarkun2.jpg',
         },
-        'kirkanos' : {
+        'kirkanos': {
             name: 'Kir Kanos',
             health: '180',
             attack: '10',
             counterattack: '15',
             image: 'assets/images/kirkanos.jpg',
         },
-        'marajade' : {
+        'marajade': {
             name: 'Mara Jade',
             health: '120',
             attack: '9',
             counterattack: '12',
             image: 'assets/images/marajade.jpg',
         },
-        'starkiller' : {
+        'starkiller': {
             name: 'Starkiller',
             health: '150',
             attack: '12',
             counterattack: '15',
             image: 'assets/images/starkiller3.jpg',
         },
-        'tenelka' : {
+        'tenelka': {
             name: 'Tenel Ka',
             health: '100',
             attack: '8',
@@ -61,6 +61,7 @@ function resetGame() {
         attackLog: 0,
     }
 }
+
 function displayRoster() {
     var stats = Object.keys(roster);
     for (var i = 0; i < stats.length; i++) {
@@ -74,13 +75,12 @@ function displayRoster() {
 function createCharacterCards(character, key) {
     var card = $("<div class='character_card' data-name='" + key + "'>");
     var cardname = $("<div class='card_name'>").text(character.name);
-    var cardimage = $("<img class='card_image' alt='image'>").attr('src',character.image);
+    var cardimage = $("<img class='card_image' alt='image'>").attr('src', character.image);
     var cardhealth = $("<div class='card_health'>").text(character.health);
     card.append(cardname, cardimage, cardhealth);
 
     return card;
 }
-
 
 
 // Functions to be Called During Gameplay ==============================================================================
@@ -100,7 +100,7 @@ function displayEnemyRoster(chosenCard) {
 }
 
 function selectDefender() {
-    $(".enemy_card").on("click", function() {
+    $(".enemy_card").on("click", function () {
         var selectedEnemyCard = $(this).attr('data-name');
         game.chosenRival = roster[selectedEnemyCard];
         $(this).addClass('rival');
@@ -123,7 +123,7 @@ function counterattack() {
 }
 
 function checkHealthStats() {
-    if (game.chosenCharacter.health <=0) {
+    if (game.chosenCharacter.health <= 0) {
         $("#chosen-character, #defender").empty();
         $(".row-header-chosen, .row-header-fight, .row-header-defender, #attack-btn, #battle-stats-display").hide();
         $("#result").html("Alas... you were defeated by " + game.chosenRival.name + ".  Click 'Reset Game' if you wish to play again.");
@@ -154,9 +154,9 @@ function cleargameboard() {
 
 // The Main Event ======================================================================================================
 
-$(document).ready(function() {
+$(document).ready(function () {
 
-    $("#roster").on("click", ".character_card", function() {
+    $("#roster").on("click", ".character_card", function () {
         var selectedCard = $(this).attr('data-name');
         game.chosenCharacter = roster[selectedCard];
         $(this).addClass('hero');
@@ -175,9 +175,9 @@ $(document).ready(function() {
         selectDefender();
     });
 
-    $("#attack-btn").on("click", function() {
+    $("#attack-btn").on("click", function () {
         game.attackLog++;
-        attack (game.attackLog);
+        attack(game.attackLog);
         counterattack();
         $(".hero .card_health").html(game.chosenCharacter.health);
         $(".rival .card_health").html(game.chosenRival.health);
@@ -189,7 +189,7 @@ $(document).ready(function() {
         console.log(game);
     });
 
-    $("#reset-btn").on("click", function() {
+    $("#reset-btn").on("click", function () {
         cleargameboard();
         startGame();
         $("#reset-btn").hide();

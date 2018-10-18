@@ -1,10 +1,11 @@
 # RPG-Unit-4-Game
+##### Homework Assignment 4: Challenge - jQuery
 
-Challenging Option of the Unit4/jQuery Homework - Star Wars RPG.  A fun and interactive game for web browsers.
+Challenging Option of the Unit4/jQuery Homework - Star Wars RPG.  This is a fun and interactive 'RPG' that runs in your web browser, made using HTML, CSS, and jQuery.  The original instructions for the game involved something similar in name; however, I was displeased with the visuals, and being a big fan of the original Star Wars Extended Universe, I decided to liven things up a bit and include better, albeit little known, characters.  (The Recommended Homework (Crystal Collector) can be found on my [Portfolio](https://sasquatchxyz.github.io/Basic-Portfolio/)).
 
 ## Getting Started
 
-This is a fun and interactive 'RPG' that runs in your web browser.  The original instructions for the game involved something similar in name; however, I was displeased with the visuals, and being a big fan of the original Star Wars Extended Universe, I decided to liven things up a bit and include better, albeit little known, characters.
+* [Star Wars RPG](https://sasquatchxyz.github.io/RPG-Unit-4-Game/) - Deployed Version of the Site can be viewed here.
 
 ### Prerequisites
 

@@ -55,6 +55,7 @@ html {
     border: 2px outset dimgray;
     padding: 0 5px;
 }
+
 .card_name {
     font-size: 1.5em;
     font-weight: bold;
@@ -136,7 +137,7 @@ html {
 #result {
     display: table;
     margin: 5px auto;
-/*    background: beige;*/
+    /*    background: beige;*/
 }
 
 #reset-btn {
